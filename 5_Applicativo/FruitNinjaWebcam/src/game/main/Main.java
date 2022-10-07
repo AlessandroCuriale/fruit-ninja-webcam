@@ -11,9 +11,14 @@ import javax.swing.JFrame;
  * @author alessandro.curiale
  */
 
-public class Main extends JFrame{
+public class Main extends JFrame implements PanelGameListener{
+    
+    private javax.swing.JLabel label;
+    private PanelGame panelGame;
+    
     public Main(){
         init();
+        this.panelGame.setListener(this);
     }
     private void init(){
         setTitle("FruitNinja");
@@ -22,7 +27,7 @@ public class Main extends JFrame{
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
-        PanelGame panelGame = new PanelGame();
+        panelGame = new PanelGame();
         add(panelGame);
 
         addWindowListener(new WindowAdapter(){
@@ -32,8 +37,13 @@ public class Main extends JFrame{
             }
         });
     }
-    public static void main(String[] args) {
-        Main main = new Main();
-        main.setVisible(true);
+//    public static void main(String[] args) {
+//        Main main = new Main();
+//        main.setVisible(true);
+//    }
+
+    @Override
+    public void timeChanged() {
+        label.setText("PROVA");
     }
 }

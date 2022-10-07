@@ -1,0 +1,23 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "gradle",
+			"id": "e:\\I3BB\\M306\\fruit-ninja-webcam\\5_Applicativo\\fruit-ninja-webcam-v2runfruit-ninja-webcam-v2",
+			"script": "run",
+			"description": "Runs this project as a JVM application",
+			"group": "application",
+			"project": "fruit-ninja-webcam-v2",
+			"buildFile": "E:\\I3BB\\M306\\fruit-ninja-webcam\\5_Applicativo\\fruit-ninja-webcam-v2\\build.gradle",
+			"rootProject": "fruit-ninja-webcam-v2",
+			"projectFolder": "e:\\I3BB\\M306\\fruit-ninja-webcam\\5_Applicativo\\fruit-ninja-webcam-v2",
+			"workspaceFolder": "e:\\I3BB\\M306\\fruit-ninja-webcam\\5_Applicativo\\fruit-ninja-webcam-v2",
+			"args": "",
+			"javaDebug": false,
+			"problemMatcher": [
+				"$gradle"
+			],
+			"label": "gradle: run"
+		}
+	]
+}
