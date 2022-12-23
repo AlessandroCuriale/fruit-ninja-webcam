@@ -1,70 +1,9 @@
-Fri Oct 07 14:09:11 CEST 2022 main threw an exception:
-java.lang.NullPointerException: Cannot invoke "java.lang.reflect.Method.invoke(Object, Object[])" because "org.glassfish.jaxb.runtime.v2.runtime.reflect.opt.Injector.defineClass" is null
-	at org.glassfish.jaxb.runtime.v2.runtime.reflect.opt.Injector.inject(Injector.java:289)
-	at org.glassfish.jaxb.runtime.v2.runtime.reflect.opt.Injector.inject(Injector.java:61)
-	at org.glassfish.jaxb.runtime.v2.runtime.reflect.opt.AccessorInjector.prepare(AccessorInjector.java:57)
-	at org.glassfish.jaxb.runtime.v2.runtime.reflect.opt.OptimizedAccessorFactory.get(OptimizedAccessorFactory.java:157)
-	at org.glassfish.jaxb.runtime.v2.runtime.reflect.Accessor$FieldReflection.optimize(Accessor.java:249)
-	at org.glassfish.jaxb.runtime.v2.runtime.property.ArrayProperty.<init>(ArrayProperty.java:38)
-	at org.glassfish.jaxb.runtime.v2.runtime.property.ArrayERProperty.<init>(ArrayERProperty.java:50)
-	at org.glassfish.jaxb.runtime.v2.runtime.property.ArrayElementProperty.<init>(ArrayElementProperty.java:59)
-	at org.glassfish.jaxb.runtime.v2.runtime.property.ArrayElementNodeProperty.<init>(ArrayElementNodeProperty.java:30)
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:484)
-	at org.glassfish.jaxb.runtime.v2.runtime.property.PropertyFactory.create(PropertyFactory.java:94)
-	at org.glassfish.jaxb.runtime.v2.runtime.ClassBeanInfoImpl.<init>(ClassBeanInfoImpl.java:148)
-	at org.glassfish.jaxb.runtime.v2.runtime.JAXBContextImpl.getOrCreate(JAXBContextImpl.java:462)
-	at org.glassfish.jaxb.runtime.v2.runtime.JAXBContextImpl.getOrCreate(JAXBContextImpl.java:481)
-	at org.glassfish.jaxb.runtime.v2.runtime.property.SingleElementNodeProperty.<init>(SingleElementNodeProperty.java:73)
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:484)
-	at org.glassfish.jaxb.runtime.v2.runtime.property.PropertyFactory.create(PropertyFactory.java:94)
-	at org.glassfish.jaxb.runtime.v2.runtime.ClassBeanInfoImpl.<init>(ClassBeanInfoImpl.java:148)
-	at org.glassfish.jaxb.runtime.v2.runtime.JAXBContextImpl.getOrCreate(JAXBContextImpl.java:462)
-	at org.glassfish.jaxb.runtime.v2.runtime.ClassBeanInfoImpl.<init>(ClassBeanInfoImpl.java:135)
-	at org.glassfish.jaxb.runtime.v2.runtime.JAXBContextImpl.getOrCreate(JAXBContextImpl.java:462)
-	at org.glassfish.jaxb.runtime.v2.runtime.JAXBContextImpl.getOrCreate(JAXBContextImpl.java:481)
-	at org.glassfish.jaxb.runtime.v2.runtime.property.ArrayElementProperty.<init>(ArrayElementProperty.java:71)
-	at org.glassfish.jaxb.runtime.v2.runtime.property.ArrayElementNodeProperty.<init>(ArrayElementNodeProperty.java:30)
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:484)
-	at org.glassfish.jaxb.runtime.v2.runtime.property.PropertyFactory.create(PropertyFactory.java:94)
-	at org.glassfish.jaxb.runtime.v2.runtime.ClassBeanInfoImpl.<init>(ClassBeanInfoImpl.java:148)
-	at org.glassfish.jaxb.runtime.v2.runtime.JAXBContextImpl.getOrCreate(JAXBContextImpl.java:462)
-	at org.glassfish.jaxb.runtime.v2.runtime.JAXBContextImpl.<init>(JAXBContextImpl.java:279)
-	at org.glassfish.jaxb.runtime.v2.runtime.JAXBContextImpl.<init>(JAXBContextImpl.java:77)
-	at org.glassfish.jaxb.runtime.v2.runtime.JAXBContextImpl$JAXBContextBuilder.build(JAXBContextImpl.java:1111)
-	at org.glassfish.jaxb.runtime.v2.ContextFactory.createContext(ContextFactory.java:140)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
-	at jakarta.xml.bind.ContextFinder.newInstance(ContextFinder.java:274)
-	at jakarta.xml.bind.ContextFinder.newInstance(ContextFinder.java:263)
-	at jakarta.xml.bind.ContextFinder.find(ContextFinder.java:395)
-	at jakarta.xml.bind.JAXBContext.newInstance(JAXBContext.java:691)
-	at jakarta.xml.bind.JAXBContext.newInstance(JAXBContext.java:632)
-	at de.gurkenlabs.litiengine.util.io.XmlUtilities.getContext(XmlUtilities.java:78)
-	at de.gurkenlabs.litiengine.resources.ResourceBundle.getResourceBundle(ResourceBundle.java:225)
-	at de.gurkenlabs.litiengine.resources.ResourceBundle.load(ResourceBundle.java:88)
-	at de.gurkenlabs.litiengine.resources.Resources.load(Resources.java:173)
-	at de.gurkenlabs.litiengine.resources.Resources.load(Resources.java:160)
-	at fruit.ninja.webcam.v2.Main.main(Main.java:26)
-
-====Runtime Information====
-Operating System: Windows 10
-	Architecture: amd64
-	Version: 10.0
-Memory:
-	Max heap size: 7.9 GiB
-	Current heap size: 512.0 MiB
-	Heap used: 22.9 MiB
-	Free heap: 489.1 MiB
-Java Version: Java(TM) SE Runtime Environment 19+36-2238 
-	Vendor: Oracle Corporation
-Uptime: PT0.597S
-Screens: 2
-	Screen 0: 1920x1080@60hz
-	Screen 1: 1920x1080@60hz
-
+Fri Nov 18 10:07:48 CET 2022 Main Update Loop threw an exception:
+java.lang.NullPointerException: Cannot invoke "de.gurkenlabs.litiengine.graphics.ICamera.getRenderScale()" because the return value of "de.gurkenlabs.litiengine.environment.GameWorld.camera()" is null
+	at de.gurkenlabs.litiengine.graphics.RenderEngine.renderShape(RenderEngine.java:258)
+	at de.gurkenlabs.litiengine.graphics.RenderEngine.renderShape(RenderEngine.java:231)
+	at de.gurkenlabs.litiengine.graphics.RenderEngine.renderShape(RenderEngine.java:217)
+	at fruit.ninja.webcam.v2.Main.render(Main.java:178)
+	at de.gurkenlabs.litiengine.graphics.RenderComponent.render(RenderComponent.java:130)
+	at de.gurkenlabs.litiengine.GameLoop.process(GameLoop.java:93)
+	at de.gurkenlabs.litiengine.UpdateLoop.run(UpdateLoop.java:57)

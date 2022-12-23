@@ -1,0 +1,210 @@
+package test;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.List;
+import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
+import java.util.logging.Logger;
+import java.util.logging.Handler;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.Level;
+import javax.imageio.ImageIO;
+import javax.swing.JLabel;
+//import org.opencv.core.Core;
+
+/**
+ *
+ * @author Curiale Alessandro
+ */
+public class GamePanel extends javax.swing.JPanel implements Runnable {
+
+    private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
+    private final int FRUIT_VALUE = 2;
+    private boolean inPoints; 
+    private int life = 3;
+    private boolean drawBackground = true;
+    private int points = 0;
+    JLabel punteggio = new JLabel();
+
+    public GamePanel(){
+        LOGGER.addHandler(consoleHandler);
+
+        initComponents();
+        
+    }
+
+    
+    public void setInPoints(boolean inPoints){
+        this.inPoints = inPoints;
+    }
+    
+    public void addPoints(){
+        points += FRUIT_VALUE;
+    }
+    
+    public void loseALife(){
+        life--;
+        System.out.println("life:" + life);
+    }
+    
+    Handler consoleHandler = new ConsoleHandler();
+    ArrayList<Sprite> entities = new ArrayList<>();
+
+    Thread gameThread;
+
+    double FPS = 60;
+
+    /**
+     * Creates new form GamePanel
+     */
+
+    public void startGameThread(){
+        punteggio.setText("0");
+        this.add(punteggio);
+        
+        initComponents();
+        
+        gameThread = new Thread(this);
+        gameThread.start();
+    }
+
+    @Override
+    public void run() {
+        
+        int secondi = (int) (System.currentTimeMillis() / 1000);
+        int previuTime = (int) (System.currentTimeMillis() / 1000);
+        double drawIntervall = 1000000000 / FPS;
+        double deltaIntervall = 0;
+        long previousTime = System.nanoTime();
+        long currentTime;
+        double previousSecond = 0;
+        while (gameThread != null) {
+            currentTime = System.nanoTime();
+            deltaIntervall += (currentTime - previousTime) / drawIntervall;
+
+            LOGGER.info("Gioco in esecuzione\n");
+            if (deltaIntervall >= 1) {
+                update();
+                repaint();
+                deltaIntervall--;
+
+            }
+            jLabel2.setText(secondi + "");
+            secondi = (int) (System.currentTimeMillis() / 1000 - previuTime);
+
+            if (secondi % 2 == 1 && secondi != 0 && secondi != previousSecond) {
+                previousSecond = secondi;
+                Random ran = new Random();
+                //a[0.08; 0.5] b[0.0; 1.0] c[-20;10]
+                double aRandom = ran.nextDouble() * 2 + 0.08;
+                double bRandom = ran.nextDouble() * 4 - 3;
+                double cRandom = ran.nextDouble() *10 + 520;
+                int fruitRandom = ran.nextInt(0, 5 );
+                String stringPath = "frutto"+ fruitRandom + ".png";
+                Sprite m = new Sprite(this, 120, stringPath , aRandom, bRandom, cRandom);
+
+                entities.add(m);
+
+            }
+        }
+    }
+
+    public void update() {
+
+        for (Sprite entity : entities) {
+            entity.update();
+        }
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+
+        super.paintComponent(g);
+        Graphics2D g2 = (Graphics2D) g;
+//        try {
+//                drawBackground(g2);
+//            } catch (IOException ex) {
+//                Logger.getLogger(GamePanel.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+        for (Sprite entity : entities) {
+
+            if (!(entity.y >= this.getHeight() || entity.x > this.getWidth())) {
+                try {
+                    entity.draw(g2);
+                } catch (IOException ex) {
+                    Logger.getLogger(GamePanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }else if(entity.visible && ! entity.isVisible()){
+                System.out.println("Vita persa");
+                loseALife();
+                entities.remove(entity);
+            }
+            
+               
+        }
+
+        g2.dispose();
+    }
+    public void drawBackground(Graphics2D g2) throws IOException {
+        BufferedImage background = null;
+        try {
+            background = ImageIO.read(new File("background.png"));
+        } catch (IOException ex) {
+            Logger.getLogger(GamePanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        g2.drawImage(background, 0, 0, null);
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        timerLabel = new javax.swing.JLabel();
+
+        jLabel1.setText("jLabel1");
+
+        jLabel2.setText("jLabel2");
+
+        timerLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        timerLabel.setText("5");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(96, 96, 96)
+                .addComponent(timerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(83, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(124, 124, 124)
+                .addComponent(timerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(110, Short.MAX_VALUE))
+        );
+    }// </editor-fold>//GEN-END:initComponents
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel timerLabel;
+    // End of variables declaration//GEN-END:variables
+}

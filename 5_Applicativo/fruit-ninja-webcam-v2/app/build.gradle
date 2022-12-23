@@ -34,6 +34,16 @@ dependencies {
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:31.0.1-jre'
     //implementation 'nome package cv'
+
+    implementation 'org.bytedeco:javacv:1.5.4'
+    implementation 'org.bytedeco:javacpp:1.5.4'
+    implementation 'org.bytedeco:javacpp-platform:1.5.4'
+    implementation 'org.bytedeco:openblas:0.3.10-1.5.4' 
+    implementation 'org.bytedeco:videoinput-platform:0.200-1.5.4'
+    implementation 'org.bytedeco:opencv-platform:4.4.0-1.5.4' 
+    implementation 'org.bytedeco:libdc1394-platform:2.2.6-1.5.4'
+
+
 }
 
 application {
